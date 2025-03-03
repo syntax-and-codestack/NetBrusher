@@ -18,8 +18,18 @@ typedef struct Plane{
     int numpoints[3];
     Vec3 pnormal;
     Vec3 pvec;
+    int pnumid;
     qboolean m_pPrimitMode;
 };
+
+Plane * Alloc_Plane();
+Plane * Plane_MakePoint(int point);
+Plane * Plane_MakePoints(int points[3]);
+Plane * Plane_SetTexdef(Plane * plane, const char * pTextureName, qboolean Fit);
+void PrintPlane(Plane * plane);
+qboolean * SnapPlane_ToGrid(Plane * plane, int plnpoints);
+qboolean QE_DataSelect_Plane(Plane * plane);
+const char * PlaneSPrintF(Plane * plane);
 
 //plane dotproduct x - dot, y - dot, z - dot
 #define PlaneDotProduct(x, y, z)(x(0) * y(0) * z(0) + x(1) * y(1) * z(1) + x(2) * y(2) * z(2))
@@ -52,4 +62,14 @@ qboolean Add_PlaneToArray(Plane * plane){
                                 }
          }
     return true;
+};
+
+//Plane Tools
+class QePlaneTools{
+public:
+ QePlaneTools();
+  ~QePlaneTools();
+
+  qboolean Make_PlaneNode();
+
 };
