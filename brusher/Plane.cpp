@@ -32,15 +32,22 @@ void PrintPlane(Plane * p){
     }
 };
 
+//////////////
+//make plane//
+/////////////
 void Make_Plane(Plane * plane, Vec3 v){
    Plane * realplane = NULL;
+
               v[0] = plane->pvec[0];
               v[1] = plane->pvec[1];
               v[2] = plane->pvec[2];
 
-                    Vec3 normal;
+              Vec3 normal;
+              normal[0] = plane->pnormal[0];
 
-                         normal[0] = plane->pnormal[0];
+              normal[0] /= v[0] * v[1] * v[2];
 
-                normal[0] /= v[0] * v[1] * v[2];
+       PlaneNormalize(plane, v);
+       
+     Global_NetInsertCommand("NORMALIZE_PLANE%c", plane->pnumid, "'/'");
 };
