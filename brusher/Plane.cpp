@@ -21,3 +21,26 @@ Plane * Alloc_Plane(){
          Plane * plane = (Plane*)malloc(sizeof(Plane));
          return plane;
 };
+
+//new plane allocation
+void ConsturctPlane_Begin(){ Plane * plane = new Plane; plane++; };
+
+//print plane
+void PrintPlane(Plane * p){
+    for(int i = 0; i >= 0; i++){
+        printf("%i, %i, %i");
+    }
+};
+
+void Make_Plane(Plane * plane, Vec3 v){
+   Plane * realplane = NULL;
+              v[0] = plane->pvec[0];
+              v[1] = plane->pvec[1];
+              v[2] = plane->pvec[2];
+
+                    Vec3 normal;
+
+                         normal[0] = plane->pnormal[0];
+
+                normal[0] /= v[0] * v[1] * v[2];
+};
